@@ -26,8 +26,19 @@ pip install -r requirements.txt
 
 ### 2. Run the Demo
 
+**Recommended - Simple Test (no visualization, no path issues):**
+```bash
+python simple_test.py
+```
+
+**Full Demo (includes training curves visualization):**
 ```bash
 python world_models_demo.py
+```
+
+**Quick Start (minimal version):**
+```bash
+python quick_start.py
 ```
 
 ## What to Expect
@@ -128,10 +139,15 @@ num_epochs = 200  # Train for more epochs
 
 ## Troubleshooting
 
-### "No module named 'gym'"
+### FileNotFoundError when saving plots
+If you get an error about `/home/claude/` not existing, the script is trying to save to a hardcoded path. This has been fixed in the latest version - the plot now saves to the current directory. Or simply use `simple_test.py` which doesn't use matplotlib.
+
+### "No module named 'gymnasium'"
 ```bash
-pip install gym gymnasium
+pip install gymnasium
 ```
+
+Note: This code uses **Gymnasium** (the maintained replacement for OpenAI Gym). If you see references to `gym`, it's been updated to use `gymnasium`.
 
 ### "CUDA out of memory"
 The script uses CPU by default. If you want GPU:
@@ -155,7 +171,7 @@ After running this demo, you can:
 ## Technical Details
 
 - **Framework**: PyTorch 2.0+
-- **Environment**: OpenAI Gym CartPole-v1
+- **Environment**: Gymnasium CartPole-v1 (maintained replacement for OpenAI Gym)
 - **Training**: Adam optimizer, MSE loss
 - **Architecture**: Multi-layer perceptron (MLP)
 - **Data**: ~5K-10K state transitions
@@ -165,7 +181,7 @@ After running this demo, you can:
 - Original Tutorial: https://www.codegenes.net/blog/world-models-pytorch/
 - World Models Paper: https://arxiv.org/abs/1803.10122
 - PyTorch Docs: https://pytorch.org/docs/
-- OpenAI Gym: https://gymnasium.farama.org/
+- Gymnasium (replacement for OpenAI Gym): https://gymnasium.farama.org/
 
 ## License
 
